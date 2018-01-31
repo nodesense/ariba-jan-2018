@@ -1,0 +1,39 @@
+<h2>Product Edit</h2>
+
+<form >
+  Name
+  <input   name="name"
+           [(ngModel)]="product.name"
+
+  />
+
+  Year
+  <input name="year"
+        [(ngModel)]="product.year"
+
+  />
+
+
+  Price
+  <input name="price"
+        [(ngModel)]="product.price"
+
+  />
+
+  Brand
+  <select name="brandId"
+          [(ngModel)]="product.brandId">
+        
+    <option *ngFor="let brand of brands"
+            [value]="brand.id">
+        {{brand.name}}      
+    </option>
+
+  </select>
+  
+  <button type="submit" >
+    Save
+  </button>
+
+
+</form>

@@ -1,0 +1,15 @@
+<div [ngClass]="{highlight: isMouseOn}" 
+     (mouseenter)="isMouseOn=true"
+     (mouseleave)="isMouseOn=false"
+>
+ <hr />
+
+<p> Copyrights @ {{year}}, {{company}}</p>
+
+
+<button (click)="contact()">
+  Contact Blr
+</button>
+
+
+</div>

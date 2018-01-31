@@ -1,0 +1,26 @@
+<h2>Contact</h2>
+
+<!-- working with DOM -->
+
+<!-- # reference variable -->
+
+
+<!-- ?. elvis, for null check -->
+
+<p >
+  City : {{address?.city}}
+</p>
+
+<p #para1>
+  Para 1
+</p>
+
+<input #input1 />
+
+<input #input2 />
+
+
+<button 
+  (click)="para1.textContent = input1.value + ' ' + input2.value" >
+  Join
+</button>

@@ -1,0 +1,58 @@
+<h2>Home</h2>
+
+
+<input [ngModel]="name"
+       (ngModelChange)="name = $event"
+/>
+
+<p>Sugar [()]</p>
+
+<input [(ngModel)]="name" />
+
+<p>Your name {{name}}</p>
+
+
+<p> Home Likes {{homeLikes}}</p>
+
+<app-like [likes]="homeLikes"
+          (likesChange)="homeLikes=$event"
+>
+</app-like>
+
+<!-- sugar part -->
+<app-like [(likes)]="homeLikes">
+</app-like>
+
+
+<p>Likes {{counter}} </p>
+
+<!-- one way binding -->
+
+<input value="{{counter * 3}}" />
+
+<!-- property [] binding -->
+
+<input [value]="counter * 2" />
+
+<p> * 100 {{counter * 100}} </p>
+
+<button [disabled]="counter % 2 == 1" >
+    Sum
+</button>
+
+<button (click)="incr()">
+  +1
+</button>
+
+<button on-click="decr()">
+  -1
+</button>
+
+
+
+<!-- from shared module -->
+<app-product-widget>
+
+</app-product-widget>
+
+<p>Power {{ 2 | power:3}}</p>

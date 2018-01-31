@@ -1,0 +1,24 @@
+<h2>About</h2>
+
+<button (click)="addMember('Karthi')">
+  Add
+</button>
+
+<!-- change value in view --> 
+<button (click)="show = !show">
+  Show/Hide
+</button>
+
+<div *ngIf="show == true else notShown">
+  <ul>
+    <li *ngFor="let name of members">
+        {{name}}
+    </li>
+  </ul>
+</div>
+
+<!-- angular 4 : else -->
+
+<ng-template #notShown>
+  <p>List not shown</p>
+</ng-template>

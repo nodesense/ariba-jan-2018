@@ -1,0 +1,42 @@
+<h2>Product List</h2>
+
+Field Name
+<select [(ngModel)]="fieldName">
+  <option value="year">Year</option>
+  <option value="price">Price</option>
+</select>
+
+Predicate
+<select [(ngModel)]="predicate">
+  <option value='eq'>Equal To</option>
+  <option value='gt'>Greater Than</option>
+  <option value='lt'>Lesser Than</option>
+</select>
+
+Value
+<input [(ngModel)]="value" />
+
+<p> Filter by {{fieldName}} {{predicate}} {{value}}</p>
+
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Year</th>
+    <th>Delete</th>
+  </tr>
+
+  <tr *ngFor="let product of (products | filter:fieldName:predicate:value)">
+     <td>
+      <a [routerLink]="['/products', 'edit', product.id]">   
+        {{product.name}}
+      </a>
+    </td>
+
+     <td>{{product.price}}</td>
+     <td>{{product.year}}</td>
+
+     <td> <button >Delete</button></td>
+  </tr>
+</table>
