@@ -26,7 +26,9 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 // Route configuration, map url to component
 import {RouterModule, Routes} 
                 from '@angular/router';
-import { ProductModule } from './product/product.module';
+import { AuthModule } from './auth/auth.module';
+
+//import { ProductModule } from './product/product.module';
 
 const routes: Routes = [
     {
@@ -41,11 +43,19 @@ const routes: Routes = [
         path: 'contact',
         component: ContactComponent
     },
+
+    {
+        path: 'products',
+        loadChildren: 'app/product/product.module#ProductModule'
+    },
+
     {
         path: '**',
         component: NotFoundComponent
     }
 ];
+
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -53,12 +63,15 @@ const routes: Routes = [
     imports: [
         BrowserModule,
         FormsModule,
-
+        HttpClientModule,
+        
         // apply route config
         RouterModule.forRoot(routes),
 
         SharedModule,
-        ProductModule
+        AuthModule,
+        
+      //  ProductModule
 
         // InventoryModule
         // ProductModule

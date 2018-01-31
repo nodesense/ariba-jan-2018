@@ -16,12 +16,14 @@ import {HttpClientModule} from '@angular/common/http';
 
 import {FormsModule, 
         ReactiveFormsModule} from '@angular/forms';
+import { CanEditGuard } from './guards/can-edit.guard';
 
 
 
 const routes: Routes = [
   {
-    path: 'products',
+    //path: 'products',
+    path: '', // for lazy load
     component: ProductHomeComponent,
     children: [
       {
@@ -36,7 +38,8 @@ const routes: Routes = [
 
       {
         path: 'edit/:id', // products/edit/12345
-        component: ProductEditComponent
+        component: ProductEditComponent,
+        canActivate: [CanEditGuard]
       },
 
       {
@@ -50,13 +53,13 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    HttpClientModule,
+    //HttpClientModule,
 
     FormsModule,
     ReactiveFormsModule,
 
     // FIXME: investigate
-    RouterModule.forRoot(routes)
+    RouterModule.forChild(routes)
   ],
   declarations: [ProductHomeComponent, 
                  ProductListComponent, 
@@ -72,7 +75,9 @@ const routes: Routes = [
       
       // Angular create object for class
       useClass: ProductRestfulService
-    }
+    },
+
+    CanEditGuard
   ]
 })
 export class ProductModule { }

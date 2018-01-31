@@ -5,9 +5,10 @@
 
 
 export const environment = {
-  production: false,
-  name: 'Development',
-  // Real production domain
-  apiEndPoint: 'http://localhost:7070/secured',
-  authEndPoint: 'http://localhost:7070/oauth/token'
-};
+    production: false,
+    name: 'Staging',
+    // Real production domain
+    apiEndPoint: 'http://localhost:7070',
+    authEndPoint: 'http://localhost:7070/oauth/token'
+  };
+  

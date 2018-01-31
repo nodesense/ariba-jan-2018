@@ -7,6 +7,8 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import { Product } from '../models/product';
 import { Brand } from '../models/brand';
+import { environment } from '../../../environments/environment';
+
 
 
 @Injectable()
@@ -32,15 +34,15 @@ export class ProductRestfulService extends ProductService {
    }
 
    getProducts(): Observable<Product[]> {
-     return this.http.get<Product[]> ('http://localhost:7070/api/products');
+     return this.http.get<Product[]> (environment.apiEndPoint + '/api/products');
    }
 
    getBrands(): Observable<Brand[]> {
-    return this.http.get<Brand[]> ('http://localhost:7070/api/brands');
+    return this.http.get<Brand[]> (environment.apiEndPoint +  '/api/brands');
   }
 
   getProduct(id: any): Observable<Product> {
-    return this.http.get<Product> ('http://localhost:7070/api/products/' + id);
+    return this.http.get<Product> (environment.apiEndPoint + '/api/products/' + id);
   }
 
   saveProduct(product: Product):Observable<Product> {
@@ -53,10 +55,10 @@ export class ProductRestfulService extends ProductService {
     // {{JSON DATA}}
 
     if (product.id) { // update
-      return this.http.put<Product> ('http://localhost:7070/api/products/' + product.id, 
+      return this.http.put<Product> (environment.apiEndPoint + '/api/products/' + product.id, 
                                     product);
     } else { // create
-      return this.http.post<Product> ('http://localhost:7070/api/products', 
+      return this.http.post<Product> (environment.apiEndPoint + '/api/products', 
                                     product);
     }
 
@@ -64,7 +66,7 @@ export class ProductRestfulService extends ProductService {
   }
 
   deleteProduct(id: any): Observable<any> {
-    return this.http.delete<any> ('http://localhost:7070/api/products/' + id);
+    return this.http.delete<any> (environment.apiEndPoint + '/api/products/' + id);
   }
 
 
