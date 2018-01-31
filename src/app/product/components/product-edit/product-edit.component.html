@@ -1,11 +1,37 @@
 <h2>Product Edit</h2>
 
-<form >
+<form  #productForm="ngForm"
+      (ngSubmit)="saveProduct()"
+>
+
+  <p *ngIf="productForm.dirty">
+    Form is changed
+  </p>
+
+  <p *ngIf="productForm.invalid">
+      Form is invalid
+  </p>
+  
+
   Name
   <input   name="name"
            [(ngModel)]="product.name"
 
+           required
+           minlength="2"
+
+           #productName='ngModel'
+
   />
+
+  <p *ngIf="productName.invalid"> 
+    Name is invalid
+  </p>
+
+
+  <p *ngIf="productName.dirty"> 
+      Name is changed
+    </p>
 
   Year
   <input name="year"
@@ -31,7 +57,7 @@
 
   </select>
   
-  <button type="submit" >
+  <button type="submit" [disabled]="productForm.invalid" >
     Save
   </button>
 

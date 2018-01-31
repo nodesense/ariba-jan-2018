@@ -43,4 +43,22 @@ export class ProductEditComponent implements OnInit {
 
   }
 
+
+  // form submit
+  saveProduct() {
+    this.productService
+        .saveProduct(this.product)
+        .subscribe ( savedProduct => {
+          alert("product saved");
+
+          // Option 1: go to list page
+          // this.router.navigateByUrl('/products/list');
+
+          // option 2: continue on same form
+          this.product = savedProduct;
+
+        });
+
+  }
+
 }

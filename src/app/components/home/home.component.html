@@ -1,8 +1,11 @@
 <h2>Home</h2>
 
+<!-- input is the host element -->
 
 <input [ngModel]="name"
        (ngModelChange)="name = $event"
+
+       appHighlight
 />
 
 <p>Sugar [()]</p>

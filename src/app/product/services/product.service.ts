@@ -14,6 +14,9 @@ export abstract class ProductService {
   abstract getProducts(): Observable<Product[]>;
   abstract getBrands(): Observable<Brand[]>;
   abstract getProduct(id: any): Observable<Product>;
+  abstract deleteProduct(id: any): Observable<any>;
+
+  abstract saveProduct(product: Product): Observable<Product>;
 }
 
 
@@ -38,6 +41,30 @@ export class ProductRestfulService extends ProductService {
 
   getProduct(id: any): Observable<Product> {
     return this.http.get<Product> ('http://localhost:7070/api/products/' + id);
+  }
+
+  saveProduct(product: Product):Observable<Product> {
+    // if update existing 
+    // PUT /api/products/12345
+    // {{JSON Data}}
+
+    // if create
+    // POST /api/products
+    // {{JSON DATA}}
+
+    if (product.id) { // update
+      return this.http.put<Product> ('http://localhost:7070/api/products/' + product.id, 
+                                    product);
+    } else { // create
+      return this.http.post<Product> ('http://localhost:7070/api/products', 
+                                    product);
+    }
+
+
+  }
+
+  deleteProduct(id: any): Observable<any> {
+    return this.http.delete<any> ('http://localhost:7070/api/products/' + id);
   }
 
 

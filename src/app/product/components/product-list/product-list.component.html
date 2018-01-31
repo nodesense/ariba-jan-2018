@@ -37,6 +37,8 @@ Value
      <td>{{product.price}}</td>
      <td>{{product.year}}</td>
 
-     <td> <button >Delete</button></td>
+     <td> <button (click)="deleteProduct(product.id)" >
+            Delete
+          </button></td>
   </tr>
 </table>

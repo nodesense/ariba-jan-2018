@@ -12,5 +12,69 @@
    <app-root>
      <!-- template shall be inserted -->
    </app-root>
+
+
+
+
+
+
+   <app2-root>
+      Angular 2 app ...
+   </app2-root>
+
+
+   <button id="loadScripts">
+      Load Scripts
+    </button>
+   <button id="loadApp2">
+     Load
+   </button>
+
+
+   <p id="p2">
+
+   </p>
+
+   <script>
+        var loadJS = function(url, implementationCode, location){
+          //url is URL of external file, implementationCode is the code
+          //to be called from the file, location is the location to 
+          //insert the <script> element
+
+          var scriptTag = document.createElement('script');
+          scriptTag.src = url;
+
+          scriptTag.onload = implementationCode;
+          scriptTag.onreadystatechange = implementationCode;
+
+          location.appendChild(scriptTag);
+      };
+      var yourCodeToBeCalled = function(){
+      //your code goes here
+      //alert('loaded');
+      }
+
+      
+
+      //loadJS('http://localhost:4201/inline.bundle.js', yourCodeToBeCalled, document.body);
+
+      //loadJS('http://localhost:4201/polyfills.bundle.js', yourCodeToBeCalled, document.body);
+
+      //loadJS('http://localhost:4201/styles.bundle.js', yourCodeToBeCalled, document.body);
+
+      //loadJS('http://localhost:4201/vendor.bundle.js', yourCodeToBeCalled, document.body);
+
+      
+
+      document.getElementById("loadScripts")
+      .addEventListener("click", function() {
+        console.log("Loading app 2");
+        loadJS('http://localhost:4201/main.bundle.js', yourCodeToBeCalled, document.body);
+      })
+   
+   </script>
+
 </body>
+
+
 </html>

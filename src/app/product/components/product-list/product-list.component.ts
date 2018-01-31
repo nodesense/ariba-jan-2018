@@ -20,7 +20,7 @@ export class ProductListComponent implements OnInit {
       console.log("Product List created");
    }
 
-  ngOnInit() {
+  fetchProducts() {
     this.productService.getProducts()
     .subscribe ( products => {
       // typecasting in Typescript
@@ -30,6 +30,18 @@ export class ProductListComponent implements OnInit {
       
       console.log(this.products);
 
+    });
+  }
+
+  ngOnInit() {
+    this.fetchProducts();
+  }
+
+  deleteProduct(id: any) {
+    this.productService.deleteProduct(id)
+    .subscribe ( () => {
+        //alert('product deleted');
+        this.fetchProducts();
     });
   }
 
